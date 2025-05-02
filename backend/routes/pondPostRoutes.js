@@ -79,34 +79,3 @@ router.post('/farmer/:id/assign-pond', async (req, res) => {
     res.status(500).json({ error: 'Failed to assign pond' });
   }
 });
-
-// Validate location
-router.post('/validate-location', async (req, res) => {
-  try {
-    const { location } = req.body;
-    const exists = await Pond.findOne({ location });
-
-    if (exists) {
-      return res.json({ exists: true, message: 'Location already in use' });
-    }
-    res.json({ exists: false, message: 'Location is available' });
-  } catch (err) {
-    res.status(500).json({ error: 'Validation failed' });
-  }
-});
-
-// Update farmer email
-router.post('/farmer/:id/update-email', async (req, res) => {
-  try {
-    const { email } = req.body;
-    const farmer = await Farmer.findByIdAndUpdate(req.params.id, { email }, { new: true });
-
-    if (!farmer) return res.status(404).json({ error: 'Farmer not found' });
-
-    res.status(200).json(farmer);
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to update email' });
-  }
-});
-
-module.exports = router;
