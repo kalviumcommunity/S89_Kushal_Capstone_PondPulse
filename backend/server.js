@@ -9,9 +9,9 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-app.use('/api/ponds', pondGetRoutes);   // GET routes
-app.use('/api/ponds', pondPostRoutes);  // POST routes
-app.use('/api/ponds', pondPutRoutes);   // PUT routes
+app.use('/api/ponds', pondGetRoutes);   
+app.use('/api/ponds', pondPostRoutes);  
+app.use('/api/ponds', pondPutRoutes);   
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
