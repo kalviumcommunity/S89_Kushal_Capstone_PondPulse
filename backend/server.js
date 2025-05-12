@@ -13,10 +13,6 @@ app.use('/api/ponds', pondGetRoutes);
 app.use('/api/ponds', pondPostRoutes);  
 app.use('/api/ponds', pondPutRoutes);   
 
-app.get('/', (req, res) => {
-  res.send('Welcome to the PondPulse API');
-});
-
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
