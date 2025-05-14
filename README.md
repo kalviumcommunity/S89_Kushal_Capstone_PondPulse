@@ -35,11 +35,5 @@ Key Features
 
 **Effective Farm Management:** Data-driven decision-making leads to improved operational efficiency.
 
-**Sustainability:** Our practices promote responsible aquaculture, minimizing environmental impact and ensuring long-term viability.
 
-**Financial Assistance and Training:** We offer educational resources and connect farmers with funding opportunities to support their growth.
-
-**Community Engagement:** PondPulse fosters a thriving network of aquaculture professionals, researchers, and farmers to share best practices and innovations.
-
-***Join PondPulse today and experience the future of aquaculture farming!***
 
