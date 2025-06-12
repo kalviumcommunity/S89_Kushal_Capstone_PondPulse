@@ -63,13 +63,11 @@ router.put('/:pondId/change-farmer', async (req, res) => {
     const newFarmer = await Farmer.findById(newFarmerId);
     if (!newFarmer) return res.status(404).json({ error: 'New farmer not found' });
 
-    // Remove from old farmer
     if (oldFarmer) {
       oldFarmer.ponds.pull(pond._id);
       await oldFarmer.save();
     }
 
-    // Assign to new farmer
     pond.farmer = newFarmer._id;
     await pond.save();
 
