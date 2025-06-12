@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const pondGetRoutes = require('./routes/pondGetRoutes');     
 const pondPostRoutes = require('./routes/pondPostRoutes');  
 const pondPutRoutes = require('./routes/pondPutRoutes');
+const pondDeleteRoutes = require('./routes/pondDeleteRoutes');
 
 dotenv.config();
 const app = express();
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use('/api/ponds', pondGetRoutes);   // GET routes
 app.use('/api/ponds', pondPostRoutes);  // POST routes
 app.use('/api/ponds', pondPutRoutes); // PUT routes
+app.use('/api/ponds', pondDeleteRoutes); // DELETE routes
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
