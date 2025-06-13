@@ -43,15 +43,15 @@ const Login = () => {
             placeholder="••••••••"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-          />
+           />
         </div>
-        <button type="submit" className="login-button">Login</button>
-      </form>
-      <p className="register-text">
+         <button type="submit" className="login-button">Login</button>
+        </form>
+        <p className="register-text">
         Don't have an account? <a href="#">Register</a>
-      </p>
-    </div>
-  );
-};
+       </p>
+       </div>
+   );
+ };
 
-export default Login;
+ export default Login;
