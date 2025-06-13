@@ -1,5 +1,5 @@
 /* src/components/Login.css */
-.login-container {
+ .login-container {
   max-width: 400px;
   margin: 60px auto;
   padding: 30px;
@@ -7,34 +7,34 @@
   border-radius: 10px;
   background: #fff;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
+ }
 
-.login-title {
+ .login-title {
   text-align: center;
   font-size: 24px;
   margin-bottom: 25px;
   color: #333;
-}
+ }
 
-.login-form .form-group {
+ .login-form .form-group {
   margin-bottom: 15px;
-}
+ }
 
-.login-form label {
+ .login-form label {
   display: block;
   font-weight: 600;
   margin-bottom: 5px;
   color: #555;
-}
+ }
 
-.login-form input {
+ .login-form input {
   width: 100%;
   padding: 10px;
   border: 1px solid #bbb;
   border-radius: 5px;
-}
+ }
 
-.login-button {
+ .login-button {
   width: 100%;
   padding: 10px;
   background-color: #0077cc;
@@ -43,21 +43,28 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-}
+ }
 
-.login-button:hover {
+ .login-button:hover {
   background-color: #005fa3;
-}
+ }
 
-.register-text {
+ .register-text {
   margin-top: 20px;
   text-align: center;
   font-size: 14px;
-}
-.register-text a {
+ }
+ .register-text a {
   color: #0077cc;
   text-decoration: none;
-}
-.register-text a:hover {
+ }
+ .register-text a:hover {
   text-decoration: underline;
-}
+ }
+
+ .error-message {
+  color: red;
+  margin-bottom: 10px;
+  font-size: 14px;
+  text-align: center;
+ }
