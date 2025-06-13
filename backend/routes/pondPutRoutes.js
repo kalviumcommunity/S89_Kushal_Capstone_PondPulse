@@ -1,10 +1,10 @@
-const express = require('express');
-const router = express.Router();
-const Pond = require('../models/pond');
-const Farmer = require('../models/farmerSchema');
+ const express = require('express');
+ const router = express.Router();
+ const Pond = require('../models/pond');
+ const Farmer = require('../models/farmerSchema');
 
 // Update a Farmer by ID
-router.put('/farmer/:id', async (req, res) => {
+ router.put('/farmer/:id', async (req, res) => {
   try {
     const updatedFarmer = await Farmer.findByIdAndUpdate(
       req.params.id,
@@ -18,10 +18,10 @@ router.put('/farmer/:id', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: 'Failed to update farmer' });
   }
-});
+ });
 
 // Update a Pond by ID
-router.put('/:id', async (req, res) => {
+ router.put('/:id', async (req, res) => {
   try {
     const updatedPond = await Pond.findByIdAndUpdate(
       req.params.id,
@@ -35,10 +35,10 @@ router.put('/:id', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: 'Failed to update pond' });
   }
-});
+ });
 
 // Update only temperature of a Pond
-router.put('/:id/temperature', async (req, res) => {
+ router.put('/:id/temperature', async (req, res) => {
   try {
     const { temperature } = req.body;
     const pond = await Pond.findById(req.params.id);
@@ -50,10 +50,10 @@ router.put('/:id/temperature', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: 'Failed to update temperature' });
   }
-});
+ });
 
 // Reassign a pond to a new farmer
-router.put('/:pondId/change-farmer', async (req, res) => {
+ router.put('/:pondId/change-farmer', async (req, res) => {
   try {
     const { newFarmerId } = req.body;
     const pond = await Pond.findById(req.params.pondId);
@@ -78,6 +78,6 @@ router.put('/:pondId/change-farmer', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: 'Failed to reassign pond' });
   }
-});
+ });
 
-module.exports = router;
+ module.exports = router;

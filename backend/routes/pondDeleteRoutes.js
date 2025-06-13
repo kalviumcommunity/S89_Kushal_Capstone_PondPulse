@@ -1,10 +1,10 @@
-const express = require('express');
-const router = express.Router();
-const Pond = require('../models/pond');
-const Farmer = require('../models/farmerSchema');
+ const express = require('express');
+ const router = express.Router();
+ const Pond = require('../models/pond');
+ const Farmer = require('../models/farmerSchema');
 
 // ❌ Delete a pond by ID
-router.delete('/:id', async (req, res) => {
+ router.delete('/:id', async (req, res) => {
   try {
     const pond = await Pond.findByIdAndDelete(req.params.id);
     if (!pond) return res.status(404).json({ error: 'Pond not found' });
@@ -20,10 +20,10 @@ router.delete('/:id', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: 'Failed to delete pond' });
   }
-});
+ });
 
 // ❌ Delete a farmer by ID (and optionally their ponds)
-router.delete('/farmer/:id', async (req, res) => {
+ router.delete('/farmer/:id', async (req, res) => {
   try {
     const farmer = await Farmer.findById(req.params.id);
     if (!farmer) return res.status(404).json({ error: 'Farmer not found' });
@@ -36,6 +36,6 @@ router.delete('/farmer/:id', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: 'Failed to delete farmer' });
   }
-});
+ });
 
-module.exports = router;
+ module.exports = router;
