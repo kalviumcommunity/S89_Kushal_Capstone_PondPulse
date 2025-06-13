@@ -1,16 +1,16 @@
-const express = require('express');
-const router = express.Router();
-const Pond = require('../models/pond');
-const Farmer = require('../models/farmerSchema');
+ const express = require('express');
+ const router = express.Router();
+ const Pond = require('../models/pond');
+ const Farmer = require('../models/farmerSchema');
 
 // Utility to validate required fields
-const isMissing = (fields) => {
+ const isMissing = (fields) => {
   return Object.entries(fields).filter(([_, v]) => !v);
-};
+ };
 
 // @route   POST /api/ponds/farmer
 // @desc    Create a new farmer
-router.post('/farmer', async (req, res) => {
+ router.post('/farmer', async (req, res) => {
   try {
     const { name, email } = req.body;
 
@@ -26,11 +26,11 @@ router.post('/farmer', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: 'Failed to create farmer', details: err.message });
   }
-});
+ });
 
 // @route   POST /api/ponds/
 // @desc    Create a new pond and assign to farmer
-router.post('/', async (req, res) => {
+ router.post('/', async (req, res) => {
   try {
     const { name, location, temperature, ph, oxygenLevel, farmerId } = req.body;
 
@@ -62,11 +62,11 @@ router.post('/', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: 'Failed to create pond', details: err.message });
   }
-});
+ });
 
 // @route   POST /api/ponds/multi
 // @desc    Create multiple ponds for one farmer
-router.post('/multi', async (req, res) => {
+ router.post('/multi', async (req, res) => {
   try {
     const { ponds, farmerId } = req.body;
 
@@ -95,11 +95,11 @@ router.post('/multi', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: 'Failed to create multiple ponds', details: err.message });
   }
-});
+ });
 
 // @route   POST /api/ponds/farmer/:id/assign-pond
 // @desc    Assign an existing pond to a farmer
-router.post('/farmer/:id/assign-pond', async (req, res) => {
+ router.post('/farmer/:id/assign-pond', async (req, res) => {
   try {
     const { pondId } = req.body;
     const farmer = await Farmer.findById(req.params.id);
@@ -121,6 +121,6 @@ router.post('/farmer/:id/assign-pond', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: 'Failed to assign pond', details: err.message });
   }
-});
+ });
 
-module.exports = router;
+ module.exports = router;

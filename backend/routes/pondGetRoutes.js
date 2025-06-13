@@ -1,39 +1,39 @@
-const express = require('express');
-const router = express.Router();
-const Pond = require('../models/pond');
-const Farmer = require('../models/farmerSchema');
+ const express = require('express');
+ const router = express.Router();
+ const Pond = require('../models/pond');
+ const Farmer = require('../models/farmerSchema');
 
 // Helper to safely parse float
-const toFloat = (val) => {
+ const toFloat = (val) => {
   const num = parseFloat(val);
   return isNaN(num) ? undefined : num;
-};
+ };
 
 // ✅ 1. Get all ponds
 // GET /api/ponds
-router.get('/', async (req, res) => {
+ router.get('/', async (req, res) => {
   try {
     const ponds = await Pond.find();
     res.status(200).json(ponds);
   } catch (err) {
     res.status(500).json({ error: 'Server error' });
-  }
-});
+  } 
+ });
 
 // ✅ 2. Get all farmers
 // GET /api/ponds/farmer
-router.get('/farmer', async (req, res) => {
+ router.get('/farmer', async (req, res) => {
   try {
     const farmers = await Farmer.find();
     res.json(farmers);
   } catch (error) {
     res.status(500).json({ error: 'Server error' });
   }
-});
+ });
 
 // ✅ 3. Get a specific farmer by ID, with ponds populated
 // GET /api/ponds/farmer/:farmerId
-router.get('/farmer/:farmerId', async (req, res) => {
+ router.get('/farmer/:farmerId', async (req, res) => {
   try {
     const { farmerId } = req.params;
     const farmer = await Farmer.findById(farmerId).populate('ponds');
@@ -46,11 +46,11 @@ router.get('/farmer/:farmerId', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: 'Server error' });
   }
-});
+ });
 
 // ✅ 4. Get ponds by location
 // GET /api/ponds/location/:location
-router.get('/location/:location', async (req, res) => {
+ router.get('/location/:location', async (req, res) => {
   try {
     const ponds = await Pond.find({ location: req.params.location });
     if (ponds.length === 0) {
@@ -60,11 +60,11 @@ router.get('/location/:location', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: 'Server error' });
   }
-});
+ });
 
 // ✅ 5. Get ponds sorted by temperature
 // GET /api/ponds/sorted-by-temperature?order=asc|desc
-router.get('/sorted-by-temperature', async (req, res) => {
+ router.get('/sorted-by-temperature', async (req, res) => {
   const { order = 'asc' } = req.query;
   try {
     const ponds = await Pond.find().sort({ temperature: order === 'asc' ? 1 : -1 });
@@ -72,11 +72,11 @@ router.get('/sorted-by-temperature', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: 'Server error' });
   }
-});
+ });
 
 // ✅ 6. Filter ponds by temp and oxygen
 // GET /api/ponds/filter?minTemperature=20&maxTemperature=30&minOxygenLevel=3&maxOxygenLevel=6
-router.get('/filter', async (req, res) => {
+ router.get('/filter', async (req, res) => {
   const { minTemperature, maxTemperature, minOxygenLevel, maxOxygenLevel } = req.query;
 
   const filterConditions = {};
@@ -102,11 +102,11 @@ router.get('/filter', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: 'Server error' });
   }
-});
+ });
 
 // ✅ 7. Get pond by ID
 // GET /api/ponds/:id
-router.get('/:id', async (req, res) => {
+ router.get('/:id', async (req, res) => {
   try {
     const pond = await Pond.findById(req.params.id);
     if (!pond) {
@@ -116,6 +116,6 @@ router.get('/:id', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: 'Server error' });
   }
-});
+ });
 
-module.exports = router;
+ module.exports = router;
